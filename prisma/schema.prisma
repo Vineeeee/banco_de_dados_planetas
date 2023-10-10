@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Destination {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(200)
+  description String @db.VarChar(500)
+  distance    String @db.VarChar(200)
+  travel      String @db.VarChar(200)
+
+  @@map("destinations")
+}
+
+model Crew {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(200)
+  bio String @db.VarChar(500)
+  role    String @db.VarChar(200)
+
+  @@map("crews")
+}
+
+model Tecnology {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(200)
+  description String @db.VarChar(500)
+
+  @@map("tecnologies")
+}
