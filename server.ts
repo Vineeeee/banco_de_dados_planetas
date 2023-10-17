@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).send({ message: "error server" });
+        res.status(500).send({ message: `error server: ${error}` });
     }
 
 });
@@ -34,7 +34,7 @@ app.get("/destination", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).send({ message: "error server" });
+        res.status(500).send({ message: `error server: ${error}` });
     }
 
 });
@@ -49,7 +49,7 @@ app.get("/crew", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).send({ message: "error server" });
+        res.status(500).send({ message: `error server: ${error}` });
     }
 
 });
@@ -64,7 +64,7 @@ app.get("/tecnology", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).send({ message: "error server" });
+        res.status(500).send({ message: `error server: ${error}` });
     }
 
 });
