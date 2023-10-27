@@ -38,9 +38,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var client_1 = require("@prisma/client");
+var cors_1 = require("cors");
 var app = express();
 var prisma = new client_1.PrismaClient();
+app.use(cors_1.default);
 app.use(express.json());
+var allowedOrigins = ["http://localhost:5173/"];
+var options = {
+    origin: allowedOrigins
+};
+app.use((0, cors_1.default)(options));
 app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tecnology, crew, destinations, error_1;
     return __generator(this, function (_a) {
@@ -67,43 +74,6 @@ app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, func
         }
     });
 }); });
-app.delete("/posts/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                id = Number(req.params.id);
-                return [4 /*yield*/, prisma.crew.delete({
-                        where: {
-                            id: id
-                        }
-                    })];
-            case 1:
-                _a.sent();
-                res.status(200).send();
-                return [2 /*return*/];
-        }
-    });
-}); });
-app.post("/add", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, description;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _a = req.body, name = _a.name, description = _a.description;
-                return [4 /*yield*/, prisma.tecnology.create({
-                        data: {
-                            name: name,
-                            description: description
-                        }
-                    })];
-            case 1:
-                _b.sent();
-                res.status(201).send();
-                return [2 /*return*/];
-        }
-    });
-}); });
 app.get("/destination", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var destinations, error_2;
     return __generator(this, function (_a) {
@@ -118,7 +88,7 @@ app.get("/destination", function (req, res) { return __awaiter(void 0, void 0, v
             case 2:
                 error_2 = _a.sent();
                 console.error(error_2);
-                res.status(500).send({ message: "error server" });
+                res.status(500).send({ message: "error server: ".concat(error_2) });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -138,7 +108,7 @@ app.get("/crew", function (req, res) { return __awaiter(void 0, void 0, void 0, 
             case 2:
                 error_3 = _a.sent();
                 console.error(error_3);
-                res.status(500).send({ message: "error server" });
+                res.status(500).send({ message: "error server: ".concat(error_3) });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -158,7 +128,7 @@ app.get("/tecnology", function (req, res) { return __awaiter(void 0, void 0, voi
             case 2:
                 error_4 = _a.sent();
                 console.error(error_4);
-                res.status(500).send({ message: "error server" });
+                res.status(500).send({ message: "error server: ".concat(error_4) });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
