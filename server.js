@@ -38,10 +38,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var client_1 = require("@prisma/client");
-var cors_1 = require("cors");
 var app = express();
 var prisma = new client_1.PrismaClient();
-app.use(cors_1.default);
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 app.use(express.json());
 app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tecnology, crew, destinations, error_1;
