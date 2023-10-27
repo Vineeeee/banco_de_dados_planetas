@@ -43,11 +43,6 @@ var app = express();
 var prisma = new client_1.PrismaClient();
 app.use(cors_1.default);
 app.use(express.json());
-var allowedOrigins = ["http://localhost:5173/"];
-var options = {
-    origin: allowedOrigins
-};
-app.use((0, cors_1.default)(options));
 app.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tecnology, crew, destinations, error_1;
     return __generator(this, function (_a) {
