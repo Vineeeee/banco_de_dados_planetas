@@ -77,6 +77,6 @@ app.get("/tecnology", async (req, res) => {
 
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Servidor em execução em http://localhost:3000");
 });

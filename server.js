@@ -135,6 +135,6 @@ app.get("/tecnology", function (req, res) { return __awaiter(void 0, void 0, voi
         }
     });
 }); });
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
     console.log("Servidor em execução em http://localhost:3000");
 });
